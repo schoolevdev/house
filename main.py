@@ -4,7 +4,7 @@
 from turtle import *
 from math import sin, radians
 
-
+# Draw rectangle with specified x, y, width, height, fill color, border color, and bools for centering
 def draw_rec(x: float, y: float, width: float, height: float, fcol: str, bcol: str, centx: bool = True, centy: bool = False) -> None:
     penup()
     if centx:
@@ -24,10 +24,7 @@ def draw_rec(x: float, y: float, width: float, height: float, fcol: str, bcol: s
     end_fill()
 
 
-def draw_iso_tri(x: float, y: float, length: float, fcol: str, bcol: str, centx: bool = True, centy: bool = False):
-    draw_tri(x, y, length, [60, 60, 60], fcol, bcol, centx, centy)
-
-
+# Draw triangle with specified x, y, length, angles, fill color, border color, and bools for centering
 def draw_tri(x: float, y: float, length: float, angles: list[float], fcol: str, bcol: str, centx: bool = True, centy: bool = False):
     penup()
     if centx:
