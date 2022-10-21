@@ -1,11 +1,20 @@
 # Lab03avst.py
 # This program draws a colored house with turtle graphics.
-# Evin Lodder 10/19
+# Evin Lodder 10/21
 from turtle import *
 from math import sin, radians
+from random import randint
+
 
 # Draw rectangle with specified x, y, width, height, fill color, border color, and bools for centering
-def draw_rec(x: float, y: float, width: float, height: float, fcol: str, bcol: str, centx: bool = True, centy: bool = False) -> None:
+def draw_rec(x: float,
+             y: float,
+             width: float,
+             height: float,
+             fcol: str,
+             bcol: str,
+             centx: bool = True,
+             centy: bool = False) -> None:
     penup()
     if centx:
         x -= width / 2
@@ -25,7 +34,14 @@ def draw_rec(x: float, y: float, width: float, height: float, fcol: str, bcol: s
 
 
 # Draw triangle with specified x, y, length, angles, fill color, border color, and bools for centering
-def draw_tri(x: float, y: float, length: float, angles: list[float], fcol: str, bcol: str, centx: bool = True, centy: bool = False):
+def draw_tri(x: float,
+             y: float,
+             length: float,
+             angles: list[float],
+             fcol: str,
+             bcol: str,
+             centx: bool = True,
+             centy: bool = False) -> None:
     penup()
     if centx:
         x -= length / 2
@@ -46,7 +62,7 @@ def draw_tri(x: float, y: float, length: float, angles: list[float], fcol: str, 
     end_fill()
 
 
-def draw_rec_window(x: float, y: float, width: float, height: float):
+def draw_rec_window(x: float, y: float, width: float, height: float) -> None:
     draw_rec(x, y - height, width, height, "white", "black", False)
     penup()
     goto(x, y - height / 2)
@@ -68,11 +84,17 @@ hideturtle()
 width(2)
 
 # Background
-draw_rec(-1000, -125, 2000, 500, "light blue", "light blue", False)
+draw_rec(-1000, -125, 2000, 800, "light blue", "light blue", False)
 draw_rec(-1000, -625, 2000, 500, "green", "green", False)
 
 # Chimney
 draw_rec(-100, 100, 50, 200, "gray", "black")
+
+# Smoke
+penup()
+for i in range(10):
+    goto(-randint(80, 110), randint(315, 450))
+    dot(randint(10, 40), "antiquewhite3")
 
 # Draw roof
 draw_tri(-25, 125, 550, [30, 120, 30], "maroon", "black")
@@ -84,11 +106,11 @@ width(1)
 penup()
 right(90)
 for j in range(10):
+    color("black")
     # First row of bricks
     for i in range(-225, 185, 20):
         goto(i, 125 - j * 25)
         pendown()
-        color("black")
         fd(12.5)
         penup()
     # Separating line between layers
@@ -102,7 +124,6 @@ for j in range(10):
     for g in range(-215, 175, 20):
         goto(g, 112.5 - j * 25)
         pendown()
-        color("black")
         fd(12.5)
         penup()
     # Second separating line to complete 2-brick-tall row
